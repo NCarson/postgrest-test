@@ -1,17 +1,15 @@
-try running `make help` to see what the makefile can do.
+## Simple testbed for Postgrest
 
-if the test errors out while the server-running you will need to run `make stop-server` by hand.
+https://postgrest.org/
+https://github.com/PostgREST/postgrest
 
-requires `ava` installed globaly `sudo npm -g install ava`
+Nice for unit tests
 
-Steps
+## Install
 
 - Install postgrest binary in this direc https://github.com/PostgREST/postgrest/releases/
-
 - make sure your logged in as the postgresql super user (not the same as root)
-
 - read the makefile and edit your postgresql conf files
-
-- run `make create-db`
-
-- run `make` to run the server and the unit tests
+- run `make create-db` 
+- run `make start-server` 
+- run `curl localhost:3000/v_testing?limit=5`

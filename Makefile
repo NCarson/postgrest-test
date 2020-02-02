@@ -19,7 +19,13 @@ PSQL :=psql -X -d$(DBNAME)
 
 # create-db rule will reload conf (if you have problems try restarting database -- pg_ctl, pg_ctlcluster, sysctl, etc)
 
+
 HELP += \nall: start server, run tests, stop server
+.PHONY: help
+help:
+	echo $$HELP
+export HELP
+
 .PHONY: all
 all: start-server test stop-server
 
@@ -52,13 +58,5 @@ HELP += \nstop-server: stops postgrest server
 stop-server:
 	pkill --signal=KILL -f "./postgrest server.cfg" & true
 
-HELP += \ntest: runs unit tests
-.PHONY: test
-test:
-	ava test.js
-
-export HELP
-help:
-	echo $$HELP
 
 
